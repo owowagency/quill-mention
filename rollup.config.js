@@ -1,5 +1,6 @@
 import localResolve from "rollup-plugin-local-resolve";
 import babel from "@rollup/plugin-babel";
+import copy from "rollup-plugin-copy";
 import postcss from "rollup-plugin-postcss";
 import { terser } from "rollup-plugin-terser";
 import pkg from "./package.json";
@@ -14,8 +15,8 @@ export default [
         name: "quillMention",
         plugins: [terser()],
         globals: {
-          quill: "Quill"
-        }
+          quill: "Quill",
+        },
       },
       {
         file: "dist/quill.mention.min.js",
@@ -23,43 +24,49 @@ export default [
         name: "quillMention",
         plugins: [terser()],
         globals: {
-          quill: "Quill"
-        }
-      }
+          quill: "Quill",
+        },
+      },
     ],
     external: ["quill"],
     plugins: [
       localResolve(),
       babel({
-        exclude: ["node_modules/**"]
+        exclude: ["node_modules/**"],
       }),
       postcss({
         extract: true,
-        minimize: true
-      })
-    ]
+        minimize: true,
+      }),
+    ],
   },
   {
     input: "src/quill.mention.js",
     output: [
       {
         file: pkg.main,
-        format: "cjs"
+        format: "cjs",
       },
       {
         file: pkg.module,
-        format: "es"
-      }
+        format: "es",
+      },
     ],
     external: ["quill"],
     plugins: [
       localResolve(),
       babel({
-        exclude: ["node_modules/**"]
+        exclude: ["node_modules/**"],
+      }),
+      copy({
+        targets: [
+          { src: "package.json", dest: "dist" },
+          { src: "README.md", dest: "dist" },
+        ],
       }),
       postcss({
-        extract: "quill.mention.css"
-      })
-    ]
-  }
+        extract: "quill.mention.css",
+      }),
+    ],
+  },
 ];
