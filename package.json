@@ -2,7 +2,6 @@
   "name": "@owowagency/quill-mention",
   "version": "3.1.0",
   "description": "@mentions for the Quill rich text editor",
-  "homepage": "https://quill-mention.com/",
   "entry": "quill-mention",
   "main": "quill-mention.js",
   "module": "quill-mention.mjs",
