@@ -1,6 +1,7 @@
 import localResolve from "rollup-plugin-local-resolve";
 import babel from "@rollup/plugin-babel";
 import copy from "rollup-plugin-copy";
+import del from "rollup-plugin-delete";
 import postcss from "rollup-plugin-postcss";
 import { terser } from "rollup-plugin-terser";
 import pkg from "./package.json";
@@ -30,6 +31,9 @@ export default [
     ],
     external: ["quill"],
     plugins: [
+      del({
+        targets: ["docs/*", "dist/*"],
+      }),
       localResolve(),
       babel({
         exclude: ["node_modules/**"],
