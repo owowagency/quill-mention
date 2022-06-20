@@ -38,7 +38,11 @@
   "scripts": {
     "start": "concurrently \"rollup -c -w\" \"serve docs\"",
     "build": "rollup -c",
+    "publish": "npm publish",
     "test": "ava"
+  },
+  "publishConfig": {
+    "@owowagency:registry": "https://npm.pkg.github.com"
   },
   "ava": {
     "require": [
