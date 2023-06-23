@@ -16,11 +16,16 @@ jobs:
         with:
           cache: yarn
           node-version: 18.14.0
-          registry-url: https://registry.npmjs.org
 
       - run: yarn
 
       - run: yarn build
+
+      - uses: actions/setup-node@v3
+        with:
+          cache: yarn
+          node-version: 18.14.0
+          registry-url: https://registry.npmjs.org
 
       - env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
