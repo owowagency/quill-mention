@@ -16,7 +16,7 @@ jobs:
         with:
           cache: yarn
           node-version: 18.14.0
-          registry-url: https://npm.pkg.github.com/
+          registry-url: https://registry.npmjs.org
 
       - run: yarn
 
@@ -32,7 +32,7 @@ jobs:
         with:
           cache: yarn
           node-version: 18.14.0
-          registry-url: https://registry.npmjs.org
+          registry-url: https://npm.pkg.github.com/
 
       - env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
